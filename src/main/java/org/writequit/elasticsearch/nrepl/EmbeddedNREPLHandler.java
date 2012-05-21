@@ -4,6 +4,7 @@ import clojure.lang.Keyword;
 import clojure.lang.RT;
 import clojure.lang.Symbol;
 import org.elasticsearch.common.component.AbstractComponent;
+import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
 
 /**
@@ -16,6 +17,7 @@ public class EmbeddedNREPLHandler extends AbstractComponent {
 
     private final Keyword portKW;
 
+    @Inject
     public EmbeddedNREPLHandler(Settings settings) {
         super(settings);
         this.portKW = (Keyword) RT.var("clojure.core", "keyword").invoke("port");
